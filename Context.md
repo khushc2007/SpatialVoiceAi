@@ -35,21 +35,21 @@ It intercepts a voice call's audio stream and does three things simultaneously:
 ## Stack (Final, Locked)
 
 ### Backend
-| Component | Choice | License | Why |
-|---|---|---|---|
-| Runtime | Python 3.11 | — | stable, best lib support |
-| API framework | FastAPI + uvicorn | MIT | native async WS |
-| Audio capture | PyAudio (callback mode) | MIT | non-blocking, queue-based |
-| ASR | Whisper.cpp ggml-small.en (244MB) | MIT | better WER than tiny, still <400ms on i5 |
-| LLM | Phi-3-mini-4k-instruct Q4_K_M (2.3GB) | MIT | fits 8GB RAM, fast enough |
-| Embeddings | all-MiniLM-L6-v2 (80MB) | Apache 2.0 | 384-dim, fast |
-| Speaker diarization | speechbrain/spkrec-ecapa-voxceleb | Apache 2.0 | lighter than pyannote, clean license |
-| VAD | Silero VAD | MIT | accurate, low CPU |
-| HRTF dataset | SADIE II Subject 002 (~200MB) | Research (York) | smallest, most compatible |
-| Vector search | FAISS IndexFlatIP | MIT | no training, fast under 1000 nodes |
-| Graph | networkx DiGraph | BSD-3 | in-memory, sufficient |
-| Database | SQLite via aiosqlite | Public domain | async-safe, no Postgres needed |
-| Agent orchestration | Custom tool-chaining (no framework) | — | deterministic, no LangChain overhead |
+| Component           | Choice                                | License         | Why                                      |
+| ------------------- | ------------------------------------- | --------------- | ---------------------------------------- |
+| Runtime             | Python 3.11                           | —               | stable, best lib support                 |
+| API framework       | FastAPI + uvicorn                     | MIT             | native async WS                          |
+| Audio capture       | PyAudio (callback mode)               | MIT             | non-blocking, queue-based                |
+| ASR                 | Whisper.cpp ggml-small.en (244MB)     | MIT             | better WER than tiny, still <400ms on i5 |
+| LLM                 | Phi-3-mini-4k-instruct Q4_K_M (2.3GB) | MIT             | fits 8GB RAM, fast enough                |
+| Embeddings          | all-MiniLM-L6-v2 (80MB)               | Apache 2.0      | 384-dim, fast                            |
+| Speaker diarization | speechbrain/spkrec-ecapa-voxceleb     | Apache 2.0      | lighter than pyannote, clean license     |
+| VAD                 | Silero VAD                            | MIT             | accurate, low CPU                        |
+| HRTF dataset        | SADIE II Subject 002 (~200MB)         | Research (York) | smallest, most compatible                |
+| Vector search       | FAISS IndexFlatIP                     | MIT             | no training, fast under 1000 nodes       |
+| Graph               | networkx DiGraph                      | BSD-3           | in-memory, sufficient                    |
+| Database            | SQLite via aiosqlite                  | Public domain   | async-safe, no Postgres needed           |
+| Agent orchestration | Custom tool-chaining (no framework)   | —               | deterministic, no LangChain overhead     |
 
 ### Frontend
 | Component | Choice |
